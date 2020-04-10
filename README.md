@@ -1,30 +1,12 @@
-# simple data api to store and retrieve the discogs value
+# simple data api to store and retrieve the discogs value from postgres database
 
-YOur discogs collection has three values
+Your discogs collection has three values e.g.
 
-    minimum: £2,822.02
+    minimum: £10,000
     
-    median: £5,349.86
+    median: £11,000
     
-    maximum: £10,438.66
+    maximum: £12,000
     
 The api will store interact initially with postgres to store and retrieve this data
 
-## Docker
-
-to run the app manually
-
-docker build -t mconnors/discogs-spring-vanilla-data-api .
-
-## Build a Docker Image with Maven
-
-```dockerfile
-$ ./mvnw com.google.cloud.tools:jib-maven-plugin:dockerBuild -Dimage=mconnors/discogs-spring-vanilla-data-api
-```
-
-
-./mvnw com.google.cloud.tools:jib-maven-plugin:build -Dimage=mconnors/discogs-spring-vanilla-data-api
-
-## running wth profiles
-
-docker run -e "SPRING_PROFILES_ACTIVE=prod" -p 8080:8080 -t mconnors/discogs-spring-vanilla-data-api# spring-vanilla-discogs-data-api
