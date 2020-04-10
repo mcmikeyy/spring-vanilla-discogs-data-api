@@ -23,6 +23,9 @@
             **/com/connors/discog/springvanilladataapi/entity/**,
             **/com/connors/discog/springvanilladataapi/Application.java
         </code.coverage.exclusions>
+        <sonar.projectKey>mcmikeyy_spring-vanilla-discogs-data-api</sonar.projectKey>
+        <sonar.organization>gs9sgnhh3dhky0rfkv57gp4947bmf35u9o1rvl4krkcxg7m6fylxp6fi3x2whrarqvbu7cpfius4sv44bp8nokauaw84sabwq3a2i7tu5l4rioir9g233e3sszhwlal4xfwb3qpc0m8sduaa1niyk58hngj7r3x4vh4h46rhlmg15qwov6wl6h2gytq81keld0v3h0excp23f7v9l1kyrhmipau45dln6idkshcy2slgv0ed6lzz68zklrfnqm1</sonar.organization>
+        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
     </properties>
 
     <dependencies>
@@ -234,9 +237,9 @@
                 <sonar.sources>.</sonar.sources>
                 <sonar.inclusions>src/main/java/**,src/main/resources/**</sonar.inclusions>
                 <sonar.exclusions>${code.coverage.exclusions}</sonar.exclusions>
-                <sonar.projectKey>mcmikeyy_spring-vanilla-discogs-data-api</sonar.projectKey>
-                <sonar.organization>gs9sgnhh3dhky0rfkv57gp4947bmf35u9o1rvl4krkcxg7m6fylxp6fi3x2whrarqvbu7cpfius4sv44bp8nokauaw84sabwq3a2i7tu5l4rioir9g233e3sszhwlal4xfwb3qpc0m8sduaa1niyk58hngj7r3x4vh4h46rhlmg15qwov6wl6h2gytq81keld0v3h0excp23f7v9l1kyrhmipau45dln6idkshcy2slgv0ed6lzz68zklrfnqm1</sonar.organization>
-                <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+                <sonar.projectKey>${sonar.projectKey}</sonar.projectKey>
+                <sonar.organization>${sonar.organization}</sonar.organization>
+                <sonar.host.url>${sonar.host.url}</sonar.host.url>
             </properties>
             <activation>
                 <activeByDefault>false</activeByDefault>
@@ -260,7 +263,6 @@
             </build>
         </profile>
     </profiles>
-
     <distributionManagement>
         <repository>
             <id>github</id>
