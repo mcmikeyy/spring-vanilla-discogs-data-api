@@ -193,5 +193,4 @@ public class CollectionValueServiceITCase {
                 .maximum(BigDecimal.valueOf(100.33D))
                 .build();
     }
-
 }
