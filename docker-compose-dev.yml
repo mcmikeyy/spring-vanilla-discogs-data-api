@@ -1,10 +1,10 @@
 version: '3'
 services:
-  postgres:
+  mypostgres:
     image: 'postgres:latest'
+    ports:
+      - "8080:8080"
     restart: always
-    volumes:
-      - postgres_data:/var/lib/postgresql/data/
     environment:
       POSTGRES_PASSWORD: postgres
       POSTGRES_USER: postgres
@@ -13,15 +13,7 @@ services:
     build:
       dockerfile: Dockerfile.dev
       context: .
-    volumes:
-      - ./server:/app
-    environment:
-      - PGUSER=postgres
-      - PGHOST=localhost
-      - PGDATABASE=discogs
-      - PGPASSWORD=postgres
-      - PGPORT=5432
+    ports:
+      - "5432:5432"
     depends_on:
-      - postgres
-volumes:
-  postgres_data:
+      - mypostgres

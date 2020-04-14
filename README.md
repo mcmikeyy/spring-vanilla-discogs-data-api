@@ -17,6 +17,10 @@ The api will store interact initially with postgres to store and retrieve this d
 
 ## DOCKER
 
+### get ip address of running docker-compose
+
+docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' container_id
+
 ## GITHUB PACKAGE REPO
 
 
