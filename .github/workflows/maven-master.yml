@@ -71,16 +71,10 @@ jobs:
     runs-on: ubuntu-18.04
     needs: [test, sonar]
     steps:
+      - uses: actions/checkout@v1
       - name: List files in github workspace
-        run: |
-          echo GITHUB_WORKSPACE
-          ls -lrt $GITHUB_WORKSPACE
-          echo root
-          ls -lrt
-        env:
-          FIRST_NAME: Mona
-          middle_name: The
-          Last_Name: Octocat
+        working-directory: ${{ github.workspace }}
+        run: ls -la
       - uses: docker/build-push-action@v1
         with:
           username: ${{ secrets.DOCKER_USER }}
