@@ -70,14 +70,11 @@ jobs:
     name: Publish - Docker Hub
     runs-on: ubuntu-18.04
     needs: [test, sonar]
-    env:
-      REPO: ${{ secrets.DOCKER_REPO }}
-
     steps:
       - uses: docker/build-push-action@v1
         with:
           username: ${{ secrets.DOCKER_USER }}
           password: ${{ secrets.DOCKER_PASS }}
-          repository: $REPO
+          repository: ${{ secrets.DOCKER_REPO }}
           tag_with_ref: true
           tag_with_sha: true
