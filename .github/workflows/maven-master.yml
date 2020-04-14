@@ -34,6 +34,10 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 11.0.4
+      - name: tag the current code
+        run: mvn -B release:clean release:prepare -DskipTests
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Publish artifact on GitHub Packages
         run: mvn -B clean deploy -DskipTests
         env:
