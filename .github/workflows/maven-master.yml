@@ -71,6 +71,12 @@ jobs:
     runs-on: ubuntu-18.04
     needs: [test, sonar]
     steps:
+      - name: List files in github workspace
+        run: ls -lrt $GITHUB_WORKSPACE
+        env:
+          FIRST_NAME: Mona
+          middle_name: The
+          Last_Name: Octocat
       - uses: docker/build-push-action@v1
         with:
           username: ${{ secrets.DOCKER_USER }}
