@@ -72,7 +72,11 @@ jobs:
     needs: [test, sonar]
     steps:
       - name: List files in github workspace
-        run: ls -lrt $GITHUB_WORKSPACE
+        run: |
+          echo GITHUB_WORKSPACE
+          ls -lrt $GITHUB_WORKSPACE
+          echo root
+          ls -lrt
         env:
           FIRST_NAME: Mona
           middle_name: The
