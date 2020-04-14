@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.connors.discog</groupId>
     <artifactId>spring-vanilla-data-api</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
     <name>spring-vanilla-data-api</name>
     <description>Demo project for My Discogs</description>
 
