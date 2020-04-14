@@ -34,14 +34,20 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 11.0.4
+      - name: Configure git
+        run: |
+          git config --global committer.email "noreply@github.com"
+          git config --global committer.name "GitHub"
+          git config --global author.email "${GITHUB_ACTOR}@users.noreply.github.com"
+          git config --global author.name "${GITHUB_ACTOR}"
       - name: tag the current code
-        run: mvn -B release:clean release:prepare -DskipTests
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: mvn -B release:clean release:prepare -Dusername=$GITHUB_ACTOR -Dpassword=$GITHUB_TOKEN -DskipTests
       - name: Publish artifact on GitHub Packages
-        run: mvn -B clean deploy -DskipTests
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: mvn -B clean deploy -DskipTests
 
   sonar:
     name: Test - SonarCloud Scan
