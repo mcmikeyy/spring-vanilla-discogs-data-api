@@ -28,6 +28,12 @@
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
     </properties>
 
+    <scm>
+        <connection>scm:git:https://github.com/mcmikeyy/spring-vanilla-discogs-data-api</connection>
+        <developerConnection>scm:git:https://github.com/mcmikeyy/spring-vanilla-discogs-data-api</developerConnection>
+        <tag>mcmikeyy-spring-vanilla-data-api-0.0.1</tag>
+    </scm>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
