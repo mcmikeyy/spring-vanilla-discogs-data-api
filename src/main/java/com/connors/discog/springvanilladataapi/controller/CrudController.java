@@ -1,8 +1,11 @@
 package com.connors.discog.springvanilladataapi.controller;
 
-import com.connors.discog.springvanilladataapi.service.CrudService;
 import com.connors.discog.springvanilladataapi.controller.dto.BaseDTO;
-import io.swagger.annotations.ApiOperation;
+import com.connors.discog.springvanilladataapi.controller.dto.CollectionValueDTO;
+import com.connors.discog.springvanilladataapi.service.CrudService;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,20 +15,19 @@ import java.util.Optional;
 
 public abstract class CrudController<T extends BaseDTO> {
 
-    private CrudService<T> service;
+    private final CrudService<T> service;
 
     public CrudController(CrudService<T> crudService){
         this.service = crudService;
     }
 
     @GetMapping("/")
-    @ApiOperation(value = "List all")
     public ResponseEntity<List<T>> getAll(){
         return new ResponseEntity<>(service.findAll(), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    @ApiOperation(value = "Get by Id")
+    @ApiResponse(content = @Content(mediaType = "application/json", schema = @Schema(implementation =CollectionValueDTO.class)))
     public ResponseEntity<T> getById(@PathVariable Long id){
         Optional<T> optionalT = service.findById(id);
 
@@ -35,15 +37,14 @@ public abstract class CrudController<T extends BaseDTO> {
     }
 
     @PostMapping("/")
-    @ApiOperation(value = "Create a new one")
     public ResponseEntity<T> save(@RequestBody T body){
         return new ResponseEntity<>(service.save(body), HttpStatus.CREATED);
     }
 
     @DeleteMapping("/{id}")
-    @ApiOperation(value = "Delete by Id")
     public ResponseEntity<String> delete(@PathVariable Long id){
         Optional<T> optional = service.findById(id);
+        optional.ifPresent(t -> service.delete(id));
 
         return optional.map(T ->
                 new ResponseEntity<>("Object with the id " + id + " was deleted.",
@@ -53,8 +54,7 @@ public abstract class CrudController<T extends BaseDTO> {
     }
 
     @PutMapping("/{id}")
-    @ApiOperation(value = "Update by Id")
-    public ResponseEntity<String> update(@PathVariable Long id, @RequestBody T body) {
+    public ResponseEntity<String> update(@PathVariable Long id, @RequestBody T body ) {
         Optional<T> optional = service.findById(id);
         optional.ifPresent(n -> service.update(id, body));
 

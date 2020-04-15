@@ -4,19 +4,20 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
 import java.math.BigDecimal;
 
-@Entity
+@Entity(name="collection_value")
 @Data
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
-/**
- * //TODO add currency
- */
+@EntityListeners(AuditingEntityListener.class)
+
 public class CollectionValue extends BaseEntity {
 
     @Column(name="minimum")

@@ -8,7 +8,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpStatus;
 
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.CoreMatchers.*;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.Matchers.equalToObject;
 import static org.hamcrest.Matchers.greaterThanOrEqualTo;
 
@@ -106,17 +107,26 @@ public class CollectionValueControllerITCase extends CrudControllerITCase {
     @DisplayName("PUT an CollectionValues by Id to update it")
     public void givenIdAndUpdatedCollectionValues_whenPUTUpdate_thenCollectionValuesIsUpdated() {
         //given
-        Long authorId = 3L;
+        Long authorId = 5L;
         JsonObject collectionValuesJson = TestDataProvider.getCollectionValueJson();
+
+        //when
+        ValidatableResponse response2 = given()
+                .contentType("application/json")
+                .body(collectionValuesJson.toString())
+
+                .when()
+                .post(baseURL + "/collectionValues/")
+
+                .prettyPeek()
+                .then();
 
         //when
         ValidatableResponse response = given()
                 .contentType("application/json")
                 .body(collectionValuesJson.toString())
-
                 .when()
                 .put(baseURL + "/collectionValues/" + authorId)
-
                 .prettyPeek()
                 .then();
 
