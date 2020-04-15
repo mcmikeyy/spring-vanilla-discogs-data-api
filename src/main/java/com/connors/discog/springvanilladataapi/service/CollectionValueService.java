@@ -5,6 +5,7 @@ import com.connors.discog.springvanilladataapi.entity.CollectionValue;
 import com.connors.discog.springvanilladataapi.repository.CollectionValueRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -50,7 +51,6 @@ public class CollectionValueService implements CrudService<CollectionValueDTO> {
         savedCollectionValue.setMaximum(collectionValueUpdate.getMaximum());
         savedCollectionValue.setMinimum(collectionValueUpdate.getMinimum());
         savedCollectionValue.setMedian(collectionValueUpdate.getMedian());
-
         return INSTANCE.collectionValueToDto(collectionValueRepository.save(savedCollectionValue));
 
     }

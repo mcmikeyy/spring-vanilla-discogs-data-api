@@ -8,8 +8,8 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
-
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -137,6 +137,10 @@ public class CollectionValueRepositoryITCase {
                 .minimum(BigDecimal.valueOf(23.33D + l))
                 .median(BigDecimal.valueOf(42.33D + l))
                 .maximum(BigDecimal.valueOf(100.33D + l))
+                .creationDateTime(LocalDateTime.now())
+                .modifiedDateTime(LocalDateTime.now())
+                .modifiedBy("me")
+                .createdBy("me")
                 .build();
     }
 
