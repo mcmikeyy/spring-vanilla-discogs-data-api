@@ -10,7 +10,6 @@ import org.springframework.http.HttpStatus;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.notNullValue;
-import static org.hamcrest.Matchers.equalToObject;
 import static org.hamcrest.Matchers.greaterThanOrEqualTo;
 
 @DisplayName("Integration Tests of the CollectionValue CRUD REST endpoints")
@@ -54,7 +53,7 @@ public class CollectionValueControllerITCase extends CrudControllerITCase {
                 .body("creationDateTime", equalTo("2020-01-26T10:02:50"))
                 .body("maximum", equalTo(33.23f))
                 .body("minimum", equalTo(12.30f))
-                .body("median", equalToObject(24.50f))
+                .body("median", equalTo(24.50f))
                ;
     }
 
@@ -81,7 +80,7 @@ public class CollectionValueControllerITCase extends CrudControllerITCase {
                 .body("id", notNullValue())
                 .body("maximum", equalTo(100.0f))
                 .body("minimum", equalTo(12.4f))
-                .body("median", equalToObject(33.56f));
+                .body("median", equalTo(33.56f));
     }
 
     @Test

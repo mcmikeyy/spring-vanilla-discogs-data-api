@@ -24,7 +24,18 @@ spec:
         io.kompose.service: api
     spec:
       containers:
-      - image: api
+      - env:
+        - name: DATABASE_HOST
+          value: mypostgres
+        - name: DATABASE_NAME
+          value: discogs
+        - name: DATABASE_PASSWORD
+          value: postgres
+        - name: DATABASE_PORT
+          value: "5432"
+        - name: DATABASE_USER
+          value: postgres
+        image: api
         imagePullPolicy: ""
         name: api
         ports:
