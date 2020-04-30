@@ -9,7 +9,7 @@
     </parent>
     <groupId>com.connors.discog</groupId>
     <artifactId>spring-vanilla-data-api</artifactId>
-    <version>0.0.15</version>
+    <version>0.0.16-SNAPSHOT</version>
     <name>spring-vanilla-data-api</name>
     <description>Demo project for My Discogs</description>
 
@@ -30,7 +30,7 @@
     <scm>
         <connection>scm:git:https://github.com/mcmikeyy/spring-vanilla-discogs-data-api</connection>
         <developerConnection>scm:git:https://github.com/mcmikeyy/spring-vanilla-discogs-data-api</developerConnection>
-        <tag>spring-vanilla-data-api-0.0.15</tag>
+        <tag>mcmikeyy-spring-vanilla-data-api-0.0.1</tag>
     </scm>
 
     <dependencies>
